@@ -1,0 +1,31 @@
+
+.button {
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border-color: rgb(234, 194, 149);
+    padding: 3px 10px;
+    background-color: rgba(165, 163, 166, 0.943);
+  }
+  
+  .button:hover {
+    background-color: bisque;
+    cursor: pointer;
+  }
+
+.number {
+    margin-left: 10px;
+    font-weight: bold;
+    color: rgb(227, 142, 38);
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4f2222;
+  }
+
+.mobileIcon {
+font-size: 14px;
+margin-right: 5px;
+}

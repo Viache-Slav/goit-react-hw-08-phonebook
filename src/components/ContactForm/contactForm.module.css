@@ -1,0 +1,36 @@
+/* .container {
+  /* display: inline-block; */
+/* } */ 
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(234, 194, 149);
+  padding: 0px 100px 20px 10px;
+  box-shadow: 5px 5px 5px rgba(235, 201, 160, 0.3);
+}
+
+.button {
+  width: 100px;
+  margin-top: 20px;
+  border-radius: 4px;
+  padding: 3px 0;
+  border-color: rgb(234, 194, 149);
+  background-color: rgba(165, 163, 166, 0.943);
+}
+
+.button:hover {
+  background-color: bisque;
+  cursor: pointer;
+}
+
+.input {
+  border-color: rgb(234, 194, 149);
+  background-color: rgba(165, 163, 166, 0.943);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgb(240, 174, 112);
+  background-color: rgb(234, 194, 149);
+}

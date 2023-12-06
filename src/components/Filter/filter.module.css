@@ -1,0 +1,10 @@
+.input {
+  border-color: rgb(234, 194, 149);
+  background-color: rgba(165, 163, 166, 0.943);
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: rgb(240, 174, 112);
+    background-color: rgb(234, 194, 149);
+  }
