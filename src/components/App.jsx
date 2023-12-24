@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Navigation from './Navigation/Navigation';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
@@ -10,7 +10,7 @@ import Filter from './Filter/Filter';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import { fetchContacts } from '../redux/contactsSlice';
-import store from '../redux/store';
+// import store from '../redux/store';
 import css from './app.module.css';
 import UserMenu from './UserMenu/UserMenu';
 
