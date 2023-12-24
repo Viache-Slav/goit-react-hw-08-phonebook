@@ -57,7 +57,7 @@ const App = () => {
             <ContactList />
           </>
         ) : (
-          <Navigate to="/login" />
+          <Navigate to="/login" replace />
         )} />
       </Routes>
     </div>
