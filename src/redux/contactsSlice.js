@@ -1,5 +1,12 @@
+// ContactsSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+const API_BASE_URL = 'https://connections-api.herokuapp.com';
 
 const isContactDuplicate = (contacts, newContact) => {
   return contacts.some(
@@ -8,9 +15,12 @@ const isContactDuplicate = (contacts, newContact) => {
 };
 
 export const fetchContacts = createAsyncThunk(
-  'contacts/fetchContacts', async () => {
-  try {
-    const response = await axios.get('https://656b4b2fdac3630cf727f3f3.mockapi.io/contacts');
+  'contacts/fetchContacts', async (_, { getState }) => {
+    const token = getState().user.token;
+    try {
+    const response = await axios.get(
+      `${API_BASE_URL}/contacts`, { headers: { 'Authorization': `Bearer ${token}` } }
+      );
     return response.data;
   } catch (error) {
     throw error;
@@ -22,13 +32,16 @@ export const addContactAsync = createAsyncThunk(
   async (contact, { getState, rejectWithValue }) => {
     const state = getState();
     const existingContacts = state.contacts.data;
+    const token = state.user.token;
 
     if (isContactDuplicate(existingContacts, contact)) {
       return rejectWithValue('Contact with the same name or number already exists');
     }
 
     try {
-      const response = await axios.post('https://656b4b2fdac3630cf727f3f3.mockapi.io/contacts', contact);
+      const response = await axios.post(
+        `${API_BASE_URL}/contacts`, contact, { headers: { 'Authorization': `Bearer ${token}` } }
+        );
       return response.data;
     } catch (error) {
       throw error;
@@ -37,13 +50,18 @@ export const addContactAsync = createAsyncThunk(
 );
 
 export const deleteContactAsync = createAsyncThunk(
-  'contacts/deleteContactAsync', async (contactId) => {
-  try {
-    await axios.delete(`https://656b4b2fdac3630cf727f3f3.mockapi.io/contacts/${contactId}`);
-    return contactId;
-  } catch (error) {
-    throw error;
-  }
+  'contacts/deleteContactAsync', 
+  async (contactId, { getState }) => {
+    const token = getState().user.token;
+
+    try {
+      await axios.delete(
+        `${API_BASE_URL}/contacts/${contactId}`, { headers: { 'Authorization': `Bearer ${token}` } }
+        );
+      return contactId;
+    } catch (error) {
+      throw error;
+    }
 });
 
 const contactsSlice = createSlice({
@@ -72,7 +90,6 @@ const contactsSlice = createSlice({
       });
   },
 });
-
 
 export const contactsReducer = contactsSlice.reducer;
 
